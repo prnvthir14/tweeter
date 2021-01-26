@@ -1,0 +1,19 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/*
+ * Global layout stuff
+ */
+
+body {
+
+  color: #ffffff;
+  background-color: #4056A1;
+  font-size: 24px;
+  height: 120px;
+  
+}
