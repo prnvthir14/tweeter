@@ -28,7 +28,9 @@ body {
  */
 
  .container {
+  position: relative;    
   width: 90%;
   align-items: center;
   background-color: #f4f1ec;
- }
+ 
+}
