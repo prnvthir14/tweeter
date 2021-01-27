@@ -80,6 +80,17 @@ $(document).ready(function() {
 
   renderTweets(data);
 
+  //handling of submit event emitted from form
+  $('#submit-frm').submit(function (event) {
+    //console.log('hi')
+    //prevent default form-submission
+    event.preventDefault();
+
+    // //read data from submit from releveant element (in this case the grand-child of our form element who is an input elemet with type = text)
+    //tweetMessage is an object 
+    const tweetMessageSerialized = $(this).serialize();
+    //console.log(tweetMessageSerialized)
+  })
 
 })
 
