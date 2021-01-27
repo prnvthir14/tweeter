@@ -35,8 +35,7 @@
       <!-- Character CountJS -->
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 
-    <!-- Display tweets -->
-    <script type="text/javascript" src="/scripts/tweet.js"></script>
+
 
     
   </head>
@@ -61,10 +60,10 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
-        <form action="/tweets" method="POST">
+        <form id="submit-frm">
           <div class="tweet-input">
           <!--<textarea name="text" id="tweet-text"></textarea> -->
-          <input placeholder="What are you humming about?" type="text" id="tweet-text"/> 
+          <input name="text" placeholder="What are you humming about?" type="text" id="tweet-text"/> 
           </div>
           <div class="button-and-counter">
             <button type="submit" class="submit-tweet">Tweet</button>
