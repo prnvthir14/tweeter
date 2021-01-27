@@ -17,12 +17,17 @@ nav {
   color: #ffffff;
   background-color: #4056A1;
   font-size: 24px;
-  height: 120px;
+  height: 60px;
 
   padding-top: 1.5em;
   padding-right: 1.5em;
   padding-bottom: 1.5em;
   padding-left: 1.5em;
+
+  position: fixed;
+  width: 100%;
+  top: 0;
+
   
 }
 
@@ -31,7 +36,4 @@ nav span {
   color: red;
   font-family: bungee;
   
-
-
-
 }

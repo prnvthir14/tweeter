@@ -1,50 +1,27 @@
-/* .new-tweet {
-
-  display: flex;
-  justify-content: center
-
-} */
-
-
-/* .text {
-  display: flex;
-
-  justify-content: space-between;
-
-
-} */
-/*
-.submit-button {
-
- background-color: #4CAF50; 
- color: white;
-
-} 
-
-*/
-/* .submit {
-
-  background-color: #4CAF50; 
-  color: white;
- 
-}
-
-.counter {
-  align-self: flex-end;
-  background-color: #4CAF50; 
-  color: white;
- 
-} */
 
 .tweet-input{
   
   display: flex;
   justify-content: center;
+  
+
 }
 
 .button-and-counter{
   display: flex;
   justify-content: space-between;
-  color: black;
+  font-family: bungee;
 
+}
+
+.exceedsLimit {
+  color: red;
+
+}
+
+
+.submit-tweet {
+
+  background-color: #41005f; /* Green */
+  color: white
 }
