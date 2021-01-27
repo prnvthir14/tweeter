@@ -1,0 +1,32 @@
+.tweet-container {
+  border:1px solid black;
+  flex-direction: column-reverse;
+  display: flex;
+  
+
+}
+
+.tweet-container header{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: red;
+
+}
+
+.tweet-container footer{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: black;
+
+}
+
+.tweet-container:hover{
+  border-width: 2px;
+  
+}
