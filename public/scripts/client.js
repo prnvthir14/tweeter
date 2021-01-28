@@ -122,6 +122,52 @@ $(document).ready(function() {
 
   //renderTweets(data);
 
+  // //handling of submit event emitted from form
+  // $('#submit-frm').submit(function (event) {
+  //   //console.log('hi')
+  //   //prevent default form-submission
+  //   event.preventDefault();
+
+  //   //USE .TEXT() HERE TO SANITIZE THE INPUT 
+
+  //   // //read data from submit from releveant element (in this case the grand-child of our form element who is an input elemet with type = text)
+  //   //tweetMessage is an object 
+    
+  //   let tweetMessage = $('#tweet-text').val();
+    
+  //   if (!(tweetMessage) ) {
+  //     //log needd to display tweet cannot be empty/null
+  //     //here, we need some jqeuery to display tweet cannot be empty 
+  //     //window.alert('tweet cannot be empty')
+  //     //targets handle in new tweet container; want to target section class="new-tweet"      
+  //     $( "#error" ).text('tweet cannot be empty');
+      
+  //   } else if (tweetMessage.length > 140){
+  //     //log tweet length is too much
+  //     //here, we need some jqeuery to display tweet cannot be empty 
+      
+  //     $( "#error" ).text('TOOO LONGGGGG, 140 CHARS used to be enough');
+      
+
+  //   } else {
+  //     //carry out AJAX post to /tweets
+  //     $.ajax({
+  //     url: '/tweets',
+  //     type:'POST',
+  //     data:$(this).serialize()}).done((data) => {console.log('Loading tweet'); loadtweets()})
+      
+  //     //clear form after submission
+  //     $(this).find('input').val('');
+
+  //     //reset counter
+  //     $(this).find('output').val(140); 
+  //     //clear  
+  //     $( "#error" ).text('');
+      
+
+  //   }   
+  // })
+
   //handling of submit event emitted from form
   $('#submit-frm').submit(function (event) {
     //console.log('hi')
@@ -167,8 +213,6 @@ $(document).ready(function() {
 
     }   
   })
-
-
 
 
 
