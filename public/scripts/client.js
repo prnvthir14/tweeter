@@ -38,11 +38,11 @@ $(document).ready(function() {
 
     //this function will take values from myOBJ and render and HTML article that will be inserted in .tweet-container section. 
     //refactor html indents
-    const tweetArticle = `<article>
+    const tweetArticle = `<article class="tweets">
     
         <header>
           <p>${myObj.user.avatars} ${myObj.user.name}</p>
-          <p>${myObj.user.handle}</p>  
+          <p class="handle hidden">${myObj.user.handle}</p>  
         </header>
         <div>${myObj.content.text}
         </div>             
@@ -52,11 +52,14 @@ $(document).ready(function() {
         </footer>      
       </article>
       <p></p>`;
-    
-    return tweetArticle;
-  
+
+
+    return tweetArticle;  
   
   }
+
+
+
   
 
   //test code - createTweetElement fn;
@@ -76,6 +79,17 @@ $(document).ready(function() {
       $('.tweet-container').append(tweetMarkUp);
 
     }
+
+    //functionality to hide and show handle
+    $('.tweets').mouseover(function (event) {
+    $(event.currentTarget).children('header').children('.handle').removeClass('hidden')
+    })
+      
+    //
+    $('.tweets').mouseleave(function (event) {
+     $(event.currentTarget).children('header').children('.handle').addClass('hidden');
+      
+    })
 
   }
 
@@ -113,19 +127,18 @@ $(document).ready(function() {
     //prevent default form-submission
     event.preventDefault();
 
+    //USE .TEXT() HERE TO SANITIZE THE INPUT 
+
     // //read data from submit from releveant element (in this case the grand-child of our form element who is an input elemet with type = text)
     //tweetMessage is an object 
-    const tweetMessageSerialized = $(this).serialize();
     
-    //console.log(tweetMessageSerialized.length)
-    //text= ; is part of tweetMessageSerialized value returned so tweetMessageSerialized.length = 5
-    //even when there is no text.. if length = 6 there is 1 character tweeted..     
-    //need input validation here before tweetMessageSerialized gets passed
-    if (tweetMessageSerialized <= 5 ) {
-      //log needd to display tweet cannot be empty
+    let tweetMessage = $('#tweet-text').val();
+    
+    if (!(tweetMessage) ) {
+      //log needd to display tweet cannot be empty/null
       window.alert('tweet cannot be empty')
 
-    } else if (tweetMessageSerialized.length > 140){
+    } else if (tweetMessage.length > 140){
       //log tweet length is too much
       window.alert('TOOO LONGGGGG, 140 CHARS used to be enough')
     
@@ -134,14 +147,13 @@ $(document).ready(function() {
       $.ajax({
       url: '/tweets',
       type:'POST',
-      data:tweetMessageSerialized}).done((data) => {console.log('Loading tweet'); loadtweets()})
+      data:$(this).serialize()}).done((data) => {console.log('Loading tweet'); loadtweets()})
       
       //clear form after submission
       $(this).find('input').val('');
 
       //reset counter
-      $(this).find('output').val(140);
-        
+      $(this).find('output').val(140); 
 
     }   
   })
