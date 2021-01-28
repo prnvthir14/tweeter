@@ -25,3 +25,9 @@
   background-color: #41005f; /* Green */
   color: white
 }
+
+#error{
+  color: #ba3939;
+  background: #ffe0e0;
+  border: 1px solid #a33a3a;
+}
