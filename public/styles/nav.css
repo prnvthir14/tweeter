@@ -15,7 +15,7 @@ nav {
   justify-content: space-between;
 
   color: #ffffff;
-  background-color: #4056A1;
+  background-color: rgb(238, 122, 14);
   font-size: 24px;
   height: 60px;
 
@@ -33,7 +33,7 @@ nav {
 
 nav span {
 
-  color: red;
+  color: purple;
   font-family: bungee;
   
 }
