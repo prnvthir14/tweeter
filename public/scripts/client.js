@@ -49,8 +49,9 @@ $(document).ready(function() {
         <footer>
           <p> ${myObj.created_at} </p>
           <p> &#9872 &#8635 &#9829 </p>              
-        </footer>
-      </article>`;
+        </footer>      
+      </article>
+      <p></p>`;
     
     return tweetArticle;
   
@@ -115,40 +116,35 @@ $(document).ready(function() {
     // //read data from submit from releveant element (in this case the grand-child of our form element who is an input elemet with type = text)
     //tweetMessage is an object 
     const tweetMessageSerialized = $(this).serialize();
-    //console.log(tweetMessageSerialized)
+    
+    //console.log(tweetMessageSerialized.length)
+    //text= ; is part of tweetMessageSerialized value returned so tweetMessageSerialized.length = 5
+    //even when there is no text.. if length = 6 there is 1 character tweeted..     
+    //need input validation here before tweetMessageSerialized gets passed
+    if (tweetMessageSerialized <= 5 ) {
+      //log needd to display tweet cannot be empty
+      window.alert('tweet cannot be empty')
 
-    //carry out AJAX post to /tweets
-
-    $.ajax({
+    } else if (tweetMessageSerialized.length > 140){
+      //log tweet length is too much
+      window.alert('TOOO LONGGGGG, 140 CHARS used to be enough')
+    
+    } else {
+      //carry out AJAX post to /tweets
+      $.ajax({
       url: '/tweets',
       type:'POST',
       data:tweetMessageSerialized}).done((data) => {console.log('Loading tweet'); loadtweets()})
-
-
-    // const url = '/tweets';
-    // $.ajax({
-    //   url,
-    //   method: 'POST',
-    //   dataType: 'JSON',
-    //   data:tweetMessageSerialized,
-    //   success: function() {console.log('Loading tweet'); loadtweets()} ,
-    //   error: function(err) {console.log(err)} 
-    // })
-    // .done(() => {
-    //   console.log('Tweet posted.');
-    // // })
-    // .fail ( () => {
-    //   console.log('error, could not post tweet(s).');
-    // })
-    // .always( () => {
-    //   console.log('post request complete');
-    // })
       
-    //clear form after submission
-    $(this).find('input').val('');
+      //clear form after submission
+      $(this).find('input').val('');
 
+      //reset counter
+      $(this).find('output').val(140);
+        
+
+    }   
   })
-
 
 
 
