@@ -78,45 +78,6 @@ $(document).ready(function() {
 
   }
 
-  //renderTweets(data);
-
-  //handling of submit event emitted from form
-  $('#submit-frm').submit(function (event) {
-    //console.log('hi')
-    //prevent default form-submission
-    event.preventDefault();
-
-    // //read data from submit from releveant element (in this case the grand-child of our form element who is an input elemet with type = text)
-    //tweetMessage is an object 
-    const tweetMessageSerialized = $(this).serialize();
-    //console.log(tweetMessageSerialized)
-
-    //carry out AJAX post to /tweets
-    const url = '/tweets';
-    $.ajax({
-      url,
-      method: 'POST',
-      dataType: 'JSON',
-      data:tweetMessageSerialized
-    })
-    .done(() => {
-      
-      console.log('Tweets posted!');
-
-    })
-    .fail ( () => {
-      console.log('error, could not post tweet(s).');
-    })
-    .always( () => {
-      console.log('post request complete');
-    })
-      
-    //clear form after submission
-    $(this).find('input').val('');
-
-  })
-
-
   //function to fetch tweets from /tweets; - ajax get req.
   const loadtweets = function () {
     const url = '/tweets';
@@ -138,9 +99,59 @@ $(document).ready(function() {
       console.log('get request complete');
     })
 
-  }
+  }  
 
   loadtweets();
+
+
+  //renderTweets(data);
+
+  //handling of submit event emitted from form
+  $('#submit-frm').submit(function (event) {
+    //console.log('hi')
+    //prevent default form-submission
+    event.preventDefault();
+
+    // //read data from submit from releveant element (in this case the grand-child of our form element who is an input elemet with type = text)
+    //tweetMessage is an object 
+    const tweetMessageSerialized = $(this).serialize();
+    //console.log(tweetMessageSerialized)
+
+    //carry out AJAX post to /tweets
+
+    $.ajax({
+      url: '/tweets',
+      type:'POST',
+      data:tweetMessageSerialized}).done((data) => {console.log('Loading tweet'); loadtweets()})
+
+
+    // const url = '/tweets';
+    // $.ajax({
+    //   url,
+    //   method: 'POST',
+    //   dataType: 'JSON',
+    //   data:tweetMessageSerialized,
+    //   success: function() {console.log('Loading tweet'); loadtweets()} ,
+    //   error: function(err) {console.log(err)} 
+    // })
+    // .done(() => {
+    //   console.log('Tweet posted.');
+    // // })
+    // .fail ( () => {
+    //   console.log('error, could not post tweet(s).');
+    // })
+    // .always( () => {
+    //   console.log('post request complete');
+    // })
+      
+    //clear form after submission
+    $(this).find('input').val('');
+
+  })
+
+
+
+
 
 })
 
