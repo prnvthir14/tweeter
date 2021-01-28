@@ -41,7 +41,7 @@ $(document).ready(function() {
     const tweetArticle = `<article class="tweets">
     
         <header>
-          <p>${myObj.user.avatars} ${myObj.user.name}</p>
+          <p> <img src="${myObj.user.avatars}">  ${myObj.user.name}</p>
           <p class="handle hidden">${myObj.user.handle}</p>  
         </header>
         <div>${myObj.content.text}
@@ -93,6 +93,7 @@ $(document).ready(function() {
 
   }
 
+
   //function to fetch tweets from /tweets; - ajax get req.
   const loadtweets = function () {
     const url = '/tweets';
@@ -136,12 +137,18 @@ $(document).ready(function() {
     
     if (!(tweetMessage) ) {
       //log needd to display tweet cannot be empty/null
-      window.alert('tweet cannot be empty')
-
+      //here, we need some jqeuery to display tweet cannot be empty 
+      //window.alert('tweet cannot be empty')
+      //targets handle in new tweet container; want to target section class="new-tweet"      
+      $( "#error" ).text('tweet cannot be empty');
+      
     } else if (tweetMessage.length > 140){
       //log tweet length is too much
-      window.alert('TOOO LONGGGGG, 140 CHARS used to be enough')
-    
+      //here, we need some jqeuery to display tweet cannot be empty 
+      
+      $( "#error" ).text('TOOO LONGGGGG, 140 CHARS used to be enough');
+      
+
     } else {
       //carry out AJAX post to /tweets
       $.ajax({
@@ -154,9 +161,14 @@ $(document).ready(function() {
 
       //reset counter
       $(this).find('output').val(140); 
+      //clear  
+      $( "#error" ).text('');
+      
 
     }   
   })
+
+
 
 
 
