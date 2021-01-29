@@ -1,8 +1,10 @@
 .tweet-container {
-
-  flex-direction: column-reverse;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  color: black;
+  font-style: bold;
+  font-weight: 1600;
 
 }
 
@@ -38,21 +40,30 @@
 
 }
 
-.tweet-container article:hover{
-  box-shadow: 5px 10px;
-  
-}
 
-.tweet-container div{
-
-  align-self: center;
-
-}
 
 .tweet-container article{
 
   border-style: solid;
   border-width: 2px;
-  border-color: blue
+  border-color: blue;
+  
+
+}
+
+#tweet-content{
+
+  display: flex;
+  align-items:flex-start;
+  justify-content:left;
+  padding-left: 1%;
+
+}
+
+#avatar-username{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
 }
