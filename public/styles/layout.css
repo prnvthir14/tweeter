@@ -52,4 +52,10 @@ input:focus {
     flex-direction: row;
   }
 
+  .tweet-input{
+
+    padding-top: 2%;
+
+  }
+
 }
