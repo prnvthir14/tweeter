@@ -27,6 +27,8 @@
   justify-content: space-between;
   align-items: flex-end;
   color: black;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
 
 }
 
@@ -56,7 +58,7 @@
   display: flex;
   align-items:flex-start;
   justify-content:left;
-  padding-left: 1%;
+  padding-left: 2.5%;
 
 }
 
@@ -65,5 +67,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
 
 }
