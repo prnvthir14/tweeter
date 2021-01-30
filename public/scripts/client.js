@@ -6,28 +6,28 @@
 
 
 $(document).ready(function() {
-
+  
   //function that creates tweet elemet from request return obj
   const createTweetElement =  function (myObj) {
 
+    const daysAgo = moment(myObj.created_at).fromNow();
+    //console.log(daysAgo);
     //this function will take values from myOBJ and render and HTML article that will be inserted in .tweet-container section. 
     //refactor html indents
     const tweetArticle = `<article class="tweets">
     
         <header>
           <p id="avatar-username"> <img src="${myObj.user.avatars}">  ${myObj.user.name}</p>
-          <p class="handle hidden">${myObj.user.handle}</p>  
+          <p id="avatar-username">${myObj.user.handle}</p>  
         </header>
         <div id="tweet-content">${myObj.content.text}
         </div>             
         <footer>
-          <p> ${myObj.created_at} </p>
-          <p> &#9872 &#8635 &#9829 </p>              
+          <p id="daysAgo"> ${daysAgo} </p>
+          <p class="icons hidden"> &#9872 &#8635 &#9829 </p>              
         </footer>      
       </article>
       <p></p>`;
-
-
     return tweetArticle;  
   
   }
@@ -48,12 +48,12 @@ $(document).ready(function() {
 
     //functionality to hide and show handle
     $('.tweets').mouseover(function (event) {
-    $(event.currentTarget).children('header').children('.handle').removeClass('hidden')
+    $(event.currentTarget).children('footer').children('.icons').removeClass('hidden')
     })
       
     //
     $('.tweets').mouseleave(function (event) {
-     $(event.currentTarget).children('header').children('.handle').addClass('hidden');
+     $(event.currentTarget).children('footer').children('.icons').addClass('hidden');
       
     })
 
