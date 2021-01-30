@@ -42,10 +42,7 @@ input {
   width: 65%;
 }
 
-input:focus {
-  border-color: green
-}
-
+/* screen size > 1024 px - desktop*/
 @media only screen and (min-width: 1024px) {
   
   body {
@@ -59,3 +56,10 @@ input:focus {
   }
 
 }
+
+/* screen size between 768 and 1024 px - tablet*/
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  /*layout appears fine within these sizes, no adjustments needed*/ 
+
+}
+
