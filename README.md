@@ -23,7 +23,7 @@ This repository is the starter code for the project: Students will fork and clon
   },
 
 
-  ## User Guide
+  ## Screenshots
 
   !["Click on Write a new Tweet to get started!"](https://github.com/prnvthir14/tweeter/blob/master/docs/home-page-no-textbox-display.png)
 
