@@ -9,11 +9,9 @@ $(document).ready(function() {
   
   //function that creates tweet elemet from request return obj
   const createTweetElement =  function (myObj) {
-
+    //variable to store converted unix timestamp
     const daysAgo = moment(myObj.created_at).fromNow();
-    //console.log(daysAgo);
-    //this function will take values from myOBJ and render and HTML article that will be inserted in .tweet-container section. 
-    //refactor html indents
+
     const tweetArticle = `<article class="tweets">
     
         <header>
@@ -51,7 +49,6 @@ $(document).ready(function() {
     $(event.currentTarget).children('footer').children('.icons').removeClass('hidden')
     })
       
-    //
     $('.tweets').mouseleave(function (event) {
      $(event.currentTarget).children('footer').children('.icons').addClass('hidden');
       
@@ -61,7 +58,7 @@ $(document).ready(function() {
 
 
   //function to fetch tweets from /tweets; - ajax get req.
-  const loadtweets = function () {
+  const loadtweets = function() {
     const url = '/tweets';
     
     $.ajax({
@@ -87,38 +84,26 @@ $(document).ready(function() {
 
 
   //handling of submit event emitted from form
-  $('#submit-frm').submit(function (event) {
-    //console.log('hi')
+  $('#submit-frm').submit(function(event) {
     //prevent default form-submission
     event.preventDefault();
-
-    //USE .TEXT() HERE TO SANITIZE THE INPUT 
-
-    // //read data from submit from releveant element (in this case the grand-child of our form element who is an input elemet with type = text)
-    //tweetMessage is an object 
     
     let tweetMessage = $('#tweet-text').val();
-    
+  
+    //error handling before post request
     if (!(tweetMessage) ) {
-      //log needd to display tweet cannot be empty/null
-      //here, we need some jqeuery to display tweet cannot be empty 
-      //window.alert('tweet cannot be empty')
-      //targets handle in new tweet container; want to target section class="new-tweet"      
+      //no empty tweets
       $( "#error" ).text('tweet cannot be empty');
       
     } else if (tweetMessage.length > 140){
-      //log tweet length is too much
-      //here, we need some jqeuery to display tweet cannot be empty 
-      
+      //tweet cannot be longer than 140 characters
       $( "#error" ).text('TOOO LONGGGGG, 140 characters used to be enough!!');
       
-
     } else {
-      //carry out AJAX post to /tweets
+      //carry out AJAX post to /tweets - data needs to be serialized before post
       $.ajax({
       url: '/tweets',
       type:'POST',
-      // data:$(this).serialize()}).done((data) => {console.log('Loading tweet'); loadtweets()})
       data: $(this).serialize()}).done(() => {loadtweets()})
       
       //clear form after submission
@@ -127,14 +112,11 @@ $(document).ready(function() {
       //reset counter
       $(this).find('output').val(140); 
       //clear  
-      $( "#error" ).text('');
-      
+      $( "#error" ).text('');      
 
     }   
+ 
   })
-
-
-
-
+  
 })
 
